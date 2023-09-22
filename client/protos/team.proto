@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package team;
+
+service TeamService {
+  rpc Create(CreateTeamRequest) returns (Team);
+  rpc Read(ReadTeamRequest) returns (Team);
+  rpc Update(UpdateTeamRequest) returns (Team);
+  rpc Delete(DeleteTeamRequest) returns (DeleteTeamResponse);
+}
+
+message CreateTeamRequest {
+  string task = 1;
+}
+
+message ReadTeamRequest {
+  int32 id = 1;
+}
+
+message UpdateTeamRequest {
+  int32 id = 1;
+  string task = 2;
+}
+
+message DeleteTeamRequest {
+  int32 id = 1;
+}
+
+message DeleteTeamResponse {
+  bool success = 1;
+}
+
+message Team {
+  int32 id = 1;
+  string task = 2;
+}
